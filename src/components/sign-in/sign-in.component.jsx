@@ -1,4 +1,5 @@
 import Button from '../button/button.component';
+import FormInput from '../form-input/form-input.component';
 import './sign-in.styles.scss'
 
 const SignIn = () => {
@@ -10,18 +11,25 @@ const SignIn = () => {
             <span> Sign in with your email and password </span>
 
             <form> 
-                <div>
-                    <input 
-                        type='email'
-                        label='Email'
-                    />
-                    <input 
-                        type='password'
-                        label='Password'
-                    />
+                <FormInput 
+                    type='email'
+                    label='Email'
+                    required
+                />
+                <FormInput 
+                    type='password'
+                    label='Password'
+                    required
+                />
+
+                <div className='buttons-container'>                    
+                    <Button
+                        type= 'submit'
+                    > Sign In </Button>
+                    <Button 
+                        buttonType= 'google'
+                    > Google sign in</Button>
                 </div>
-                <Button > Sign In </Button>
-                <Button> Sign in with Google </Button>
             </form>   
         </div>
     )
