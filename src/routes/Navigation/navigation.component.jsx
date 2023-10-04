@@ -3,9 +3,13 @@ import { ReactComponent as CrownLogo } from "../../assests/crown.svg";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 
 import "./navigation.styles.scss"
-
+import CartDropDown from "../../components/cart-dropdown/cart-dropdown.component";
+import { CartContext } from "../../context/cart.context";
+import { useContext } from "react";
 
 const Navigation = () => {
+
+    const {isCartOpen} = useContext(CartContext);
 
     return (
         <>       
@@ -22,6 +26,7 @@ const Navigation = () => {
                         </Link>
                         <CartIcon />
                     </div>
+                { isCartOpen && <CartDropDown/> }
             </div>
             <Outlet/>
         </>
