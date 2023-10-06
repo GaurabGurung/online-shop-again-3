@@ -1,8 +1,14 @@
+import { signInWithGooglePopUp, createUserDocumentFromAuth } from '../../utility/firebase.utils';
 import Button from '../button/button.component';
 import FormInput from '../form-input/form-input.component';
 import './sign-in.styles.scss'
 
 const SignIn = () => {
+
+    const googleHandler = async() => {
+        const {user} = await signInWithGooglePopUp();
+        createUserDocumentFromAuth(user)
+    } 
 
     return (
 
@@ -28,6 +34,7 @@ const SignIn = () => {
                     > Sign In </Button>
                     <Button 
                         buttonType= 'google'
+                        onClick= {googleHandler}
                     > Google sign in</Button>
                 </div>
             </form>   
