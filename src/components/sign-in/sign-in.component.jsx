@@ -1,15 +1,32 @@
-import { signInWithGooglePopUp, createUserDocumentFromAuth } from '../../utility/firebase.utils';
+import { useEffect } from 'react';
+import { 
+    auth,
+    signInWithGooglePopUp, 
+    createUserDocumentFromAuth, 
+    signInUserWithRedirect 
+} from '../../utility/firebase.utils';
+import {getRedirectResult} from 'firebase/auth'
 import Button from '../button/button.component';
 import FormInput from '../form-input/form-input.component';
 import './sign-in.styles.scss'
 
 const SignIn = () => {
 
-    const googleHandler = async() => {
-        const {user} = await signInWithGooglePopUp();
-        createUserDocumentFromAuth(user)
+    const logGoogleUser = async() => {
+            const {user} = await signInWithGooglePopUp();
+            const userDocRef = await createUserDocumentFromAuth(user)
     } 
 
+    // useEffect( ()=> {
+    //     const a = async() => {
+    //         const response = await getRedirectResult(auth);
+
+    //         if(response){
+    //             createUserDocumentFromAuth(response.user)
+    //         } 
+    //     }
+    //     a()
+    // },[])
     return (
 
         <div className='sign-in-container'>
@@ -21,11 +38,13 @@ const SignIn = () => {
                     type='email'
                     label='Email'
                     required
+                    value= ''
                 />
                 <FormInput 
                     type='password'
                     label='Password'
                     required
+                    value= ''
                 />
 
                 <div className='buttons-container'>                    
@@ -34,8 +53,9 @@ const SignIn = () => {
                     > Sign In </Button>
                     <Button 
                         buttonType= 'google'
-                        onClick= {googleHandler}
+                        onClick= {logGoogleUser}
                     > Google sign in</Button>
+                    <Button onClick={signInUserWithRedirect} > Redirect</Button>
                 </div>
             </form>   
         </div>
