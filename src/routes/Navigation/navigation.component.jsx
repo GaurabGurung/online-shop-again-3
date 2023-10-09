@@ -6,10 +6,18 @@ import "./navigation.styles.scss"
 import CartDropDown from "../../components/cart-dropdown/cart-dropdown.component";
 import { CartContext } from "../../context/cart.context";
 import { useContext } from "react";
+import { UserContext } from "../../context/user.context";
+import { signOutUser } from "../../utility/firebase.utils";
 
 const Navigation = () => {
 
     const {isCartOpen} = useContext(CartContext);
+    const {currentUser, setCurrentUser} = useContext(UserContext);
+
+    const signOutHandler = async() => {
+        await signOutUser();
+        setCurrentUser(null);
+    }
 
     return (
         <>       
@@ -21,9 +29,15 @@ const Navigation = () => {
                         <Link className="nav-link" to= "/Shop" >
                             <span>SHOP</span>
                         </Link>
-                        <Link className="nav-link" to= "/Auth" >
-                            <span>SIGN IN</span>
-                        </Link>
+                        {
+                            currentUser ? (
+                                <span className="nav-link" onClick={signOutHandler}> SIGN OUT </span>
+                            ) : (
+                            <Link className="nav-link" to= "/Auth" >
+                                <span>SIGN IN</span>
+                            </Link>
+                            )
+                        }
                         <CartIcon />
                     </div>
                 { isCartOpen && <CartDropDown/> }

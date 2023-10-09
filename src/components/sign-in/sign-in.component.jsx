@@ -22,7 +22,7 @@ const SignIn = () => {
     const [ formFields, setFormFields] = useState(defaultFormFields);
     const {email, password} = formFields;
 
-    const {currentUser, setCurrentUser} = useContext(UserContext)
+    const {setCurrentUser} = useContext(UserContext)
 
 
     const handleChange= (event) => {
@@ -50,7 +50,8 @@ const SignIn = () => {
     const logGoogleUser = async() => {
 
             const {user} = await signInWithGooglePopUp();
-            const userDocRef = await createUserDocumentFromAuth(user)
+            const userDocRef = await createUserDocumentFromAuth(user);
+            setCurrentUser(user);
     } 
 
 
