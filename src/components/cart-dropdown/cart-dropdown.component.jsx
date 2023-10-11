@@ -12,9 +12,9 @@ const CartDropDown = () =>{
     return (
         <div className='cart-dropdown'>
             <div className='cartitems'> 
-                {cartItems.map((cartItem)=> {
-                    <CartItem key={cartItem.id} cartItem = {cartItem}/>
-                })}
+                {cartItems.map((item)=> (
+                    <CartItem key={item.id} cartItem = {item}/>
+                ))}
             </div>
             <Button>Go to Checkout</Button>
             
