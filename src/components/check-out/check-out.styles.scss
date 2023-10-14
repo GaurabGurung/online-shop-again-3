@@ -1,0 +1,25 @@
+.checkout-container {
+    padding: 40px 210px;
+
+
+    .checkout-header{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        border-bottom: 1px solid black;
+    }
+
+    .header-block{
+        margin-bottom: 10px;
+        text-transform: capitalize;
+        font-size: 20px;
+    }
+
+    .total{
+        display: flex;
+        justify-content: end;
+        text-decoration: 10px;
+        font-size: 40px;
+    }
+
+}

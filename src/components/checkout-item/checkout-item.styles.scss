@@ -1,0 +1,19 @@
+.checkout-item-container {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    border-bottom: 1px solid black;
+    .image-container{
+        width: 10px;
+    }
+    img{
+        width: 170px;
+        height: 200px;
+    }
+
+    .quantity{
+        display: flex;
+    }
+}
