@@ -19,7 +19,7 @@ const addCartItem = (cartItems, productToAdd) => {
 }
  
 
-const removeCartItem = (cartItems, cartItemToRemove) => {
+const clearCartItem = (cartItems, cartItemToRemove) => {
     const newCartItems = cartItems.map((cartItem)=>  { 
 
         if(cartItem.id === cartItemToRemove.id) {
@@ -36,7 +36,6 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
  
 
 const deleteCartItem = (cartItems, productToDelete) => cartItems.filter((cartItem)=>cartItem.id !== productToDelete.id)
-
 
 export const CartContext = createContext({
     isCartOpen : false,
@@ -62,7 +61,7 @@ export const CartProvider = ({children}) => {
     }
 
     const removeItemFromCart = (cartItemToRemove) => {
-        setCartItems(removeCartItem(cartItems, cartItemToRemove))        
+        setCartItems(clearCartItem(cartItems, cartItemToRemove))        
     }
 
     useEffect(()=>{
