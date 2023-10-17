@@ -9,12 +9,13 @@ export const CategoriesContext = createContext({
 
 
 export const CategoriesProvider = ({children}) => {
-    const [categoriesMap, setCategoriesMap] = useState([]);
+    const [categoriesMap, setCategoriesMap] = useState({});
     
     useEffect(() => {
-        const getCategoriesMap =async()=>{
+        const getCategoriesMap = async () => { 
             const categoriesMap = await getCategoriesAndDocuments()
             console.log(categoriesMap);
+            setCategoriesMap(categoriesMap);
         }
         getCategoriesMap()
     },[]);
