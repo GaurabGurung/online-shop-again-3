@@ -13,6 +13,7 @@ const Navigation = () => {
 
     const {isCartOpen} = useContext(CartContext);
     const {currentUser} = useContext(UserContext);
+    const sign = 'auth'
 
 
     return (
@@ -29,7 +30,7 @@ const Navigation = () => {
                             currentUser ? (
                                 <span className="nav-link" onClick={signOutUser}> SIGN OUT </span>
                             ) : (
-                            <Link className="nav-link" to= "/Auth" >
+                            <Link className="nav-link" to= {sign} >
                                 <span>SIGN IN</span>
                             </Link>
                             )
