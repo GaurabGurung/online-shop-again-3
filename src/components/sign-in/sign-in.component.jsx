@@ -1,8 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { 
-    auth,
-    signInWithGooglePopUp, 
-    createUserDocumentFromAuth,   
+    signInWithGooglePopUp,    
     signInAuthWithEmailAndPassword, 
 } from '../../utility/firebase.utils';
 
