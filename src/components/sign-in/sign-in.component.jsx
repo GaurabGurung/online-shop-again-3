@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import {  useState } from 'react';
 import { 
     signInWithGooglePopUp,    
     signInAuthWithEmailAndPassword, 
@@ -29,7 +29,7 @@ const SignIn = () => {
         event.preventDefault();
         
         try {
-            const {user} = await signInAuthWithEmailAndPassword(email, password)   ;
+            await signInAuthWithEmailAndPassword(email, password)   ;
             setFormFields(defaultFormFields)
 
         } catch (error) {
